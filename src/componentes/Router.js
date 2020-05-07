@@ -11,11 +11,12 @@ export class Router extends Component {
     state={
         productos:[]
     }
-
-    componentDidMount(){
+    
+    componentWillMount(){
         this.setState({
             productos:infoProducto
         })
+        // console.log(this.state.productos);        
     }
 
   render() {
@@ -31,10 +32,10 @@ export class Router extends Component {
               )} />
               <Route exact path="/nosotros" component={Nosotros} />
               <Route exact path="/producto/:idproducto" render={(props)=>{
-                  let productoId = props.location.pathname.replace('/producto/','');
+                  let idProducto = props.location.pathname.replace('/producto/','');
                   return(
-                    <SingleProducto
-                      producto = {this.state.productos[productoId]}
+                    <SingleProducto 
+                      dato={this.state.productos[idProducto]}
                     />
                   )
                 }
