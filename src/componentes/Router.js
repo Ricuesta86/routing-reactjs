@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from './Header'
+import Navegacion from './Navegacion'
 import Productos from "./Productos";
 import Nosotros from "./Nosotros";
 import Error from "./Error";
@@ -24,6 +25,7 @@ export class Router extends Component {
       <BrowserRouter>
         <div className="contenedor">
           <Header />
+          <Navegacion />
             <Switch>
               <Route exact path="/" render={()=>(
                   <Productos
@@ -31,6 +33,12 @@ export class Router extends Component {
                   />
               )} />
               <Route exact path="/nosotros" component={Nosotros} />
+              <Route exact path="/productos" render={()=>(
+                  <Productos
+                    productos={this.state.productos}
+                  />
+              )} />
+              <Route exact path="/contacto" component={Contacto} />
               <Route exact path="/producto/:idproducto" render={(props)=>{
                   let idProducto = props.location.pathname.replace('/producto/','');
                   return(
