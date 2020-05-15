@@ -1,5 +1,5 @@
 import React from 'react'
-import '../css/SingleProducto.css'
+import './SingleProducto.css'
 
 const SingleProducto = (props) => {
     const {imagen,nombre,precio,descripcion}=props.dato;

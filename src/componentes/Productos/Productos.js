@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Producto from './Producto'
+import Producto from '../Producto/Producto'
 
 export class Productos extends Component {
     

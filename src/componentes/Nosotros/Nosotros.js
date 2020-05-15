@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../css/Nosotros.css'
+import './Nosotros.css'
 
 export class Nosotros extends Component {
     render() {
