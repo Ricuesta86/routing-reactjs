@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import '../css/navegacion.css'
+import '../css/Navegacion.css'
 
 const Navegacion = () => {
     return (

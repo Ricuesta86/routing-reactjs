@@ -7,6 +7,7 @@ import Nosotros from "./Nosotros";
 import Error from "./Error";
 import infoProducto from '../datos/datos.json'
 import SingleProducto from "./SingleProducto";
+import Contacto from './Contacto'
 
 export class Router extends Component {
     state={
