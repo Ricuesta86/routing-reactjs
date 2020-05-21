@@ -11,7 +11,8 @@ import Contacto from './Contacto/Contacto'
 
 export class Router extends Component {
     state={
-        productos:[]
+        productos:[],
+        terminoBusqueda:''
     }
     
     componentWillMount(){
@@ -21,7 +22,33 @@ export class Router extends Component {
         // console.log(this.state.productos);        
     }
 
+    busquedaProducto=(busqueda)=>{
+      if(busqueda.length>3){
+        this.setState({
+          terminoBusqueda:busqueda
+        })
+      }else{
+        this.setState({
+          terminoBusqueda:''
+        })
+      }
+    }
+
   render() {
+
+    let productos=[...this.state.productos];
+    let busqueda=this.state.terminoBusqueda;
+    let resultado;
+
+    if(busqueda !== ''){
+      resultado=productos.filter(producto=>(
+        producto.nombre.toLowerCase().indexOf( busqueda.toLowerCase() ) !== -1
+      ))
+      // console.log('no esta vacio');      
+    }else{
+      resultado=productos;
+    }
+
     return (
       <BrowserRouter>
         <div className="contenedor">
@@ -30,13 +57,15 @@ export class Router extends Component {
             <Switch>
               <Route exact path="/" render={()=>(
                   <Productos
-                    productos={this.state.productos}
+                    productos={resultado}
+                    busquedaProducto={this.busquedaProducto}
                   />
               )} />
               <Route exact path="/nosotros" component={Nosotros} />
               <Route exact path="/productos" render={()=>(
                   <Productos
-                    productos={this.state.productos}
+                    productos={resultado}
+                    busquedaProducto={this.busquedaProducto}
                   />
               )} />
               <Route exact path="/contacto" component={Contacto} />
